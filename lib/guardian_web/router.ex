@@ -20,8 +20,13 @@ defmodule GuardianWeb.Router do
     get("/", PageController, :index)
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", GuardianWeb do
-  #   pipe_through :api
-  # end
+  scope "/" do
+    pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: GuardianWeb.Schema,
+      interface: :simple,
+      context: %{pubsub: GuardianWeb.Entpoint}
+  end
+
 end
