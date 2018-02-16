@@ -25,7 +25,8 @@ But basically for the backend:
 
 ## TODO
 
-- [ ] add build request endpoint (HTTP)
-- [ ] provide build requests to the frontend (graphql / absinthe)
-- [ ] write tests for database stuff (also probably add some sort of fixture handling)
+- [ ] simple UI for viewing builds
+- [ ] tests for database stuff (also probably add some sort of fixture handling)
+- [ ] initial validations (those that package.elm-lang.org does)
 - [x] store packages, versions, and build requests
+- [x] provide build requests to the frontend (graphql / absinthe)
