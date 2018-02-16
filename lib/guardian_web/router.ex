@@ -29,7 +29,7 @@ defmodule GuardianWeb.Router do
         Absinthe.Plug.GraphiQL,
         schema: GuardianWeb.Schema,
         interface: :simple,
-        context: %{pubsub: GuardianWeb.Entpoint}
+        context: %{pubsub: GuardianWeb.Endpoint}
       )
     end
   end
