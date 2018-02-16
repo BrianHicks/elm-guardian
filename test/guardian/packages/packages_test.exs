@@ -64,4 +64,62 @@ defmodule Guardian.PackagesTest do
       assert %Ecto.Changeset{} = Packages.change_package(package)
     end
   end
+
+  describe "package_builds" do
+    alias Guardian.Packages.Build
+
+    @valid_attrs %{}
+    @update_attrs %{}
+    @invalid_attrs %{}
+
+    def build_fixture(attrs \\ %{}) do
+      {:ok, build} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Packages.create_build()
+
+      build
+    end
+
+    test "list_package_builds/0 returns all package_builds" do
+      build = build_fixture()
+      assert Packages.list_package_builds() == [build]
+    end
+
+    test "get_build!/1 returns the build with given id" do
+      build = build_fixture()
+      assert Packages.get_build!(build.id) == build
+    end
+
+    test "create_build/1 with valid data creates a build" do
+      assert {:ok, %Build{} = build} = Packages.create_build(@valid_attrs)
+    end
+
+    test "create_build/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Packages.create_build(@invalid_attrs)
+    end
+
+    test "update_build/2 with valid data updates the build" do
+      build = build_fixture()
+      assert {:ok, build} = Packages.update_build(build, @update_attrs)
+      assert %Build{} = build
+    end
+
+    test "update_build/2 with invalid data returns error changeset" do
+      build = build_fixture()
+      assert {:error, %Ecto.Changeset{}} = Packages.update_build(build, @invalid_attrs)
+      assert build == Packages.get_build!(build.id)
+    end
+
+    test "delete_build/1 deletes the build" do
+      build = build_fixture()
+      assert {:ok, %Build{}} = Packages.delete_build(build)
+      assert_raise Ecto.NoResultsError, fn -> Packages.get_build!(build.id) end
+    end
+
+    test "change_build/1 returns a build changeset" do
+      build = build_fixture()
+      assert %Ecto.Changeset{} = Packages.change_build(build)
+    end
+  end
 end
