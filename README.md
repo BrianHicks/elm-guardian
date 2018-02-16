@@ -26,6 +26,6 @@ But basically for the backend:
 ## TODO
 
 - [ ] add build request endpoint (HTTP)
-- [ ] store build requests
 - [ ] provide build requests to the frontend (graphql / absinthe)
-- [ ] come back and figure out what's next (probably start validating stuff)
+- [ ] write tests for database stuff (also probably add some sort of fixture handling)
+- [x] store packages, versions, and build requests
