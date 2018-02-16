@@ -21,12 +21,16 @@ defmodule GuardianWeb.Router do
   end
 
   scope "/" do
-    pipe_through :api
+    pipe_through(:api)
 
-    forward "/graphiql", Absinthe.Plug.GraphiQL,
-      schema: GuardianWeb.Schema,
-      interface: :simple,
-      context: %{pubsub: GuardianWeb.Entpoint}
+    if Mix.env() == :dev do
+      forward(
+        "/graphiql",
+        Absinthe.Plug.GraphiQL,
+        schema: GuardianWeb.Schema,
+        interface: :simple,
+        context: %{pubsub: GuardianWeb.Entpoint}
+      )
+    end
   end
-
 end
