@@ -7,7 +7,7 @@ defmodule Guardian.Packages.Build do
     belongs_to(:package, Package)
     has_one(:version, Version)
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc false

@@ -9,7 +9,7 @@ defmodule Guardian.Packages.Package do
     has_many(:builds, Build)
     has_many(:versions, Version)
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc false
