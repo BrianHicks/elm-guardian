@@ -7,7 +7,7 @@ defmodule Guardian.Repo.Migrations.CreatePackageVersions do
       add :minor, :integer
       add :patch, :integer
       add :compiler, :string
-      add :package_id, references(:packages, on_delete: :nothing)
+      add :package_id, references(:packages, on_delete: :delete_all), null: false
       add :build_id, references(:package_builds, on_delete: :nothing)
 
       timestamps()
