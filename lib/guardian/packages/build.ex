@@ -1,11 +1,11 @@
 defmodule Guardian.Packages.Build do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Guardian.Packages.Build
-
+  alias Guardian.Packages.{Package, Build, Version}
 
   schema "package_builds" do
-    field :package_id, :id
+    belongs_to(:package, Package)
+    has_one(:version, Version)
 
     timestamps()
   end
@@ -14,6 +14,6 @@ defmodule Guardian.Packages.Build do
   def changeset(%Build{} = build, attrs) do
     build
     |> cast(attrs, [])
-    |> validate_required([])
+    |> validate_required([:package_id])
   end
 end

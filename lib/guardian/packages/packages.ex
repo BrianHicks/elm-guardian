@@ -105,15 +105,15 @@ defmodule Guardian.Packages do
   alias Guardian.Packages.Build
 
   @doc """
-  Returns the list of package_builds.
+  Returns the list of builds.
 
   ## Examples
 
-      iex> list_package_builds()
+      iex> list_builds()
       [%Build{}, ...]
 
   """
-  def list_package_builds do
+  def list_builds do
     Repo.all(Build)
   end
 
