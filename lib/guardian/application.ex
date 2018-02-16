@@ -11,7 +11,7 @@ defmodule Guardian.Application do
       # Start the Ecto repository
       supervisor(Guardian.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(GuardianWeb.Endpoint, []),
+      supervisor(GuardianWeb.Endpoint, [])
       # Start your own worker by calling: Guardian.Worker.start_link(arg1, arg2, arg3)
       # worker(Guardian.Worker, [arg1, arg2, arg3]),
     ]
