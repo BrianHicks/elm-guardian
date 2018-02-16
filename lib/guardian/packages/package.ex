@@ -4,8 +4,8 @@ defmodule Guardian.Packages.Package do
   alias Guardian.Packages.{Package, Build, Version}
 
   schema "packages" do
-    field :name, :string
-    field :source, :string
+    field(:name, :string)
+    field(:source, :string)
     has_many(:builds, Build)
     has_many(:versions, Version)
 

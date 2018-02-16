@@ -3,12 +3,11 @@ defmodule Guardian.Packages.Version do
   import Ecto.Changeset
   alias Guardian.Packages.{Package, Build, Version}
 
-
   schema "package_versions" do
-    field :compiler, :string
-    field :major, :integer
-    field :minor, :integer
-    field :patch, :integer
+    field(:compiler, :string)
+    field(:major, :integer)
+    field(:minor, :integer)
+    field(:patch, :integer)
     belongs_to(:package, Package)
     belongs_to(:build, Build)
 
