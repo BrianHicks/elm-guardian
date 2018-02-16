@@ -4,6 +4,12 @@ defmodule GuardianWeb.Schema do
 
   alias GuardianWeb.Resolvers
 
+  # TODO: dataloader for associations https://hexdocs.pm/absinthe/ecto.html#dataloader
+  # apparently the approach below is deprecated, despite being recommended in the
+  # docs. <_<
+
+  import_types Absinthe.Type.Custom
+
   object :package do
     field(:name, non_null(:string))
     field(:source, non_null(:string))
@@ -12,6 +18,14 @@ defmodule GuardianWeb.Schema do
       non_null(list_of(non_null(:version))),
       resolve: assoc(:versions)
     )
+    field(
+      :builds,
+      non_null(list_of(non_null(:build))),
+      resolve: assoc(:builds)
+    )
+
+    field(:inserted_at, non_null(:datetime))
+    field(:updated_at, non_null(:datetime))
   end
 
   object :version do
@@ -19,6 +33,17 @@ defmodule GuardianWeb.Schema do
     field(:minor, non_null(:integer))
     field(:patch, non_null(:integer))
     field(:compiler, non_null(:string)) # TODO: make an enum
+    field(:build, :build, resolve: assoc(:build))
+
+    field(:inserted_at, non_null(:datetime))
+    field(:updated_at, non_null(:datetime))
+  end
+
+  object :build do
+    field(:version, :version, resolve: assoc(:version))
+
+    field(:inserted_at, non_null(:datetime))
+    field(:updated_at, non_null(:datetime))
   end
 
   query do
