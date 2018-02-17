@@ -27,3 +27,4 @@ npm-debug.log
 /config/*.secret.exs
 /schema.json
 assets/elm-stuff
+/assets/js/bundle.js
