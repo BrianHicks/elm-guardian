@@ -26,3 +26,4 @@ npm-debug.log
 # variables.
 /config/*.secret.exs
 /schema.json
+assets/elm-stuff

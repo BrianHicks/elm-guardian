@@ -2,17 +2,14 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "deploy": "brunch build --production",
-    "watch": "brunch watch --stdin"
+    "graphql": "graphqelm http://localhost:4000/api/graphql --base API --output src/"
   },
   "dependencies": {
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html"
   },
   "devDependencies": {
-    "babel-brunch": "6.1.1",
-    "brunch": "2.10.9",
-    "clean-css-brunch": "2.10.0",
-    "uglify-js-brunch": "2.10.0"
+    "graphqelm": "^3.1.4",
+    "webpack": "^3.11.0"
   }
 }

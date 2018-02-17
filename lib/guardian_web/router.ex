@@ -32,5 +32,13 @@ defmodule GuardianWeb.Router do
         context: %{pubsub: GuardianWeb.Endpoint}
       )
     end
+
+    scope "/api" do
+      forward(
+        "/graphql",
+        Absinthe.Plug,
+        schema: GuardianWeb.Schema
+      )
+    end
   end
 end
