@@ -8,16 +8,18 @@ defmodule GuardianWeb.Schema do
   # apparently the approach below is deprecated, despite being recommended in the
   # docs. <_<
 
-  import_types Absinthe.Type.Custom
+  import_types(Absinthe.Type.Custom)
 
   object :package do
     field(:name, non_null(:string))
     field(:source, non_null(:string))
+
     field(
       :versions,
       non_null(list_of(non_null(:version))),
       resolve: assoc(:versions)
     )
+
     field(
       :builds,
       non_null(list_of(non_null(:build))),
@@ -29,10 +31,12 @@ defmodule GuardianWeb.Schema do
   end
 
   object :version do
-    field(:major, non_null(:integer)) # TODO: make these together a fancy scalar
+    # TODO: make these together a fancy scalar
+    field(:major, non_null(:integer))
     field(:minor, non_null(:integer))
     field(:patch, non_null(:integer))
-    field(:compiler, non_null(:string)) # TODO: make an enum
+    # TODO: make an enum
+    field(:compiler, non_null(:string))
     field(:build, :build, resolve: assoc(:build))
 
     field(:inserted_at, non_null(:datetime))
